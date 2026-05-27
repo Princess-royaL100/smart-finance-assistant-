@@ -62,6 +62,43 @@ This code opens your CSV file, strips out messy dollar signs, ensures all number
 **Artifact:** Screenshot of debugging session with Claude about handling messy CSV data.
 <img width="806" height="229" alt="Screenshot 2026-05-27 115228" src="https://github.com/user-attachments/assets/701e2ae0-de7f-4849-b997-7dde60a1b267" />
 
+As per the UC's instructions i changed my server to the new server that we were given. 
+
+IMPORTING PANDAS
+# Uncomment the line below when running in Google Colab
+!pip install gradio pandas hands-on-ai
+
+# Import core libraries
+import pandas as pd
+import numpy as np
+from datetime import datetime
+import warnings
+warnings.filterwarnings('ignore')
+
+print("📦 Core libraries loaded successfully!")
+print(f"Pandas version: {pd.__version__}")
+
+HANDS ON AI 
+import os
+# Configure hands-on-ai server connection
+os.environ['HANDS_ON_AI_SERVER'] = 'https://ollama.locollm.org'
+os.environ['HANDS_ON_AI_MODEL'] = 'gemma3:4b'
+os.environ['HANDS_ON_AI_API_KEY'] = 'Curtin2026ISYS20015002'
+print("🔑 Hands-on-AI configured successfully!")
+
+CONNECTION TEST
+from hands_on_ai.chat import get_response
+
+# Test the connection to the hands-on-ai server
+try:
+    response = get_response("Hello! I'm building a Smart Finance Assistant.")
+    print("✅ Hands-on-AI connection successful!")
+    print(f"Response: {response}")
+except Exception as e:
+    print(f"❌ Connection issue: {e}")
+    print("You can still work on the data processing foundation without this.")
+
+
 **Context:** My application should be able to chat with the user, retrive from CSV or other documents, it should have a Agent Tool and Gradio UI. 
 
 **My Prompt:** "Create a Python script using the hands-on-ai library to authenticate with an Ollama server at 'https://ollama.serveur.au' running 'llama3.2'. Use a secure environment variable setup for the API key 'isys2001-assignment-key'. Include a robust try-except connection test to verify that the chatbot can successfully greet the user as 'The Lifestyle Architect'." 
