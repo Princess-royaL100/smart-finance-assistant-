@@ -1,4 +1,4 @@
-# 📓 Developer's Diary – AI Collaboration Guide
+<img width="806" height="229" alt="Screenshot 2026-05-27 115228" src="https://github.com/user-attachments/assets/a84c0347-bd14-4e24-976f-5f13ee1a16db" /># 📓 Developer's Diary – AI Collaboration Guide
 
 This file shows sample entries for your **Developer's Diary**. You must document your AI collaboration throughout the project development. Each entry should have:
 - **Artifact**: a screenshot, GIF, or snippet of your AI interaction
@@ -7,90 +7,85 @@ This file shows sample entries for your **Developer's Diary**. You must document
 
 **Key Principle**: You're directing AI like a junior developer - always review, critique, and improve their suggestions.
 
----
+
 
 ## Foundation Skills Examples
 
 ### Entry 1 – Effective AI Prompting for Business Data
 **Artifact:** Screenshot of ChatGPT conversation about analyzing spending data.
 
+<img width="887" height="393" alt="Screenshot 2026-05-27 111313" src="https://github.com/user-attachments/assets/7f8d8799-84f1-4518-8628-b4d7633718a6" />
+
+
 **My Initial Prompt:** "Help me analyze CSV data with pandas"
 
-**My Improved Prompt:** "I'm building a Smart Finance Assistant. I have a CSV with Date, Amount, Category, Description columns. The Amount has dollar signs that need cleaning. I want to calculate total spending by category and format results for a business presentation. Please write pandas code with clear comments."
+**My Improved Prompt:** Create a function to load a personal finance CSV transaction data with Date, Amount, Category, and Description columns. Handle Australian dollar signs, commas, and negative signs in the Amount column. If Category or Description are missing, fill them with 'Uncategorized'. Include clear, user-friendly error messages."
 
 **Context:** Learning to write specific, business-focused AI prompts.
 
-**Reflection:** The first prompt gave me generic pandas code. The improved prompt with business context got me professional, commented code that handled data cleaning. I learned that AI needs clear business context and output requirements to give useful results. Now I always include: data structure, business purpose, and desired output format.
-
----
 
 ### Entry 2 – Critiquing and Improving AI Code
-**Artifact:** Before/after screenshots of AI-generated spending analysis code.
+**Artifact:** Before/after screenshots of AI-generated spending analysis code. 
 
-**Context:** AI gave me complex code that was hard to understand for my transaction analysis.
+<img width="911" height="345" alt="Screenshot 2026-05-27 113301" src="https://github.com/user-attachments/assets/c4ef54cf-eb6a-4fdf-8d2e-4d5f957b69b4" />
+
+**Context:** AI gave me a code that had errors, I then asked AI to help me dubug the code.
 
 **AI's First Response:**
-```python
-df.groupby('Category')['Amount'].agg({'sum','mean','count'}).round(2)
-```
+To resolve the connection error in Google Colab, we need to explicitly assign your system personality prompt using the hands_on_ai framework's proper syntax before calling for responses.
 
-**My Critique:** "This code is unclear and doesn't handle dollar signs. Can you make it more readable with business-friendly variable names and add data cleaning?"
+The main issue causing a connection failure or model confusion in the previous snippet is that passing a long instructions paragraph directly inside get_response() without setting up a chat history or a system role prompt can make the LLM server reject the query or return an empty error response.
 
-**AI's Improved Response:**
-```python
-# Clean amount data by removing dollar signs
-df['Amount_Clean'] = pd.to_numeric(df['Amount'].str.replace('$', ''), errors='coerce')
+Here is the fully debugged, production-ready implementation combined into a single cell. This uses the hands_on_ai.chat module's proper state configuration to ensure the AI knows its role perfectly.
 
-# Calculate spending metrics by category
-spending_summary = df.groupby('Category')['Amount_Clean'].agg({
-    'Total_Spent': 'sum',
-    'Average_Amount': 'mean', 
-    'Transaction_Count': 'count'
-}).round(2)
-```
-
-**Reflection:** I learned that AI's first response isn't always the best. By asking for clearer variable names and business context, I got much better code. This taught me to always review AI code and ask for improvements rather than accepting the first solution.
-
+**Reflection:** I learnt that sometimes AI might make mistakes and the code that the AI can give you may need debugging for it to work perfectly. 
 ---
 
 ### Entry 3 – Business Context in AI Interactions
 **Artifact:** Screenshot of Gemini generating financial insights from data.
 
-**Context:** I wanted AI to help generate business recommendations from spending analysis.
+<img width="798" height="242" alt="Screenshot 2026-05-27 111945" src="https://github.com/user-attachments/assets/00595ff5-c3c2-46bb-b3b1-9c3c16289f99" />
 
-**My Prompt:** "Based on this spending analysis showing Groceries: $450, Dining: $380, Coffee: $120, Transport: $95, create business insights and savings recommendations that sound professional for a personal finance app."
+**Context:** I want AI to create a code that will allow the user to input their CSV File.  
 
-**AI Response:** Generated specific recommendations like "Consider meal planning to reduce dining expenses" and "Coffee purchases represent 8% of total spending - consider brewing at home."
+**My Prompt:** "Create a function to load a personal finance CSV transaction data with Date, Amount, Category, and Description columns. Handle Australian dollar signs, commas, and negative signs in the Amount column. If Category or Description are missing, fill them with 'Uncategorized'. Include clear, user-friendly error messages."
+
+**AI Response:** 
+This code opens your CSV file, strips out messy dollar signs, ensures all numbers are readable by Python, and catches missing categories.
 
 **Reflection:** When I include business context and specify the audience (personal finance app users), AI generates much more relevant and professional output. I learned that framing requests in business terms gets business-quality responses. Now I always think about who will read the output and what decisions they need to make.
 
 ---
 
-### Entry 4 – Data Quality and Edge Cases
+### Entry 4 – Intergration 
+
 **Artifact:** Screenshot of debugging session with Claude about handling messy CSV data.
+<img width="806" height="229" alt="Screenshot 2026-05-27 115228" src="https://github.com/user-attachments/assets/701e2ae0-de7f-4849-b997-7dde60a1b267" />
 
-**Context:** My CSV had negative amounts (refunds) and missing values that broke my calculations.
+**Context:** My application should be able to chat with the user, retrive from CSV or other documents, it should have a Agent Tool and Gradio UI. 
 
-**My Problem:** "My spending analysis is giving wrong totals because some amounts are negative (refunds) and some cells are empty."
+**My Prompt:** "Create a Python script using the hands-on-ai library to authenticate with an Ollama server at 'https://ollama.serveur.au' running 'llama3.2'. Use a secure environment variable setup for the API key 'isys2001-assignment-key'. Include a robust try-except connection test to verify that the chatbot can successfully greet the user as 'The Lifestyle Architect'." 
 
-**AI Solution:** Helped me add data validation:
-```python
+**AI Solution:** This is where we transition into the advanced AI integration. We are going to implement the Hands-on-AI Configuration exactly as required by your lecturer's template, but tailored beautifully to fit "The Lifestyle Architect" system. 
 # Handle refunds and missing data appropriately
 df_clean = df.dropna(subset=['Amount_Clean'])
 positive_spending = df_clean[df_clean['Amount_Clean'] > 0]
 refunds = df_clean[df_clean['Amount_Clean'] < 0]
 ```
 
-**Reflection:** AI helped me think about real-world data issues I hadn't considered. I learned that business data is always messy and I need to ask AI specifically about edge cases like refunds, missing values, and invalid entries. This makes my finance assistant more robust for actual use.
 
----
+**Reflection:** Automation Over Manual Input: Instead of forcing your user (or your marker) to use a slow getpass() prompt to manually type in the key every single time they hit "Run Cell", this hardcodes the semester key isys2001-assignment-key safely into the environment instantly.
+
+Contextual Testing: Instead of sending a generic "Hello", it passes a fast system message instructing the backend AI to act like The Lifestyle Architect. This acts as a preview for your marker that your theme is active.
 
 ## Advanced Integration Examples
 
-### Entry 5 – Combining Multiple AI Tools
+### Entry 5 – DEBUGGING THE CODE 
 **Artifact:** Screenshot showing integration of hands-on-ai chat with pandas analysis.
 
-**Context:** I wanted to create a chatbot that could answer questions about spending data.
+<img width="746" height="330" alt="Screenshot 2026-05-27 120149" src="https://github.com/user-attachments/assets/a59cf270-7a7d-430c-b6aa-98483edebb5e" />
+
+**Context:** I wanted AI help me debug the code because the one I Gemini had given me was producing errors. 
 
 **My Approach:** Used AI to help me combine CSV analysis with hands-on-ai chat functionality.
 
