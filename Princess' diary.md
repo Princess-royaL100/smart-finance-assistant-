@@ -97,7 +97,7 @@ refunds = df_clean[df_clean['Amount_Clean'] < 0]
 **AI Suggestion:** To convert your processed transactional KPIs into high-impact, personal financial advice, you need an automated logical layer that interprets the data and structures it for your user interface.
 
 Below is the complete Python implementation for the AI Insight Generator Component. It reads the output from your data pipeline, dynamically flags budget issues like "Lifestyle Leakage," and builds a structured, reader-friendly layout using Markdown.
-```python
+
 import pandas as pd
 from typing import Dict, Any
 
@@ -112,6 +112,11 @@ def generate_financial_recommendations(financial_kpis: Dict[str, Any]) -> str:
     essential = financial_kpis.get('essential_allocation', 0.0)
     discretionary = financial_kpis.get('discretionary_allocation', 0.0)
     summary_df = financial_kpis.get('summary_dataframe', pd.DataFrame())
+    ### Entry 7- 
+    <img width="1287" height="612" alt="Screenshot 2026-05-27 152708" src="https://github.com/user-attachments/assets/3e3ffc34-07c7-46ff-aeed-9d5243fb29ee" />
+When I am trying to Ask the chatbot some questions the application is outputting an error message. 
+
+
     
     # Calculate key benchmark percentages
     discretionary_pct = (discretionary / outflows * 100) if outflows > 0 else 0.0
@@ -221,4 +226,5 @@ print(app_insights_panel)
 ```
 
 ---
+### Entry 5 – DEBUGGING THE CODE 
 
