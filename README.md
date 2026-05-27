@@ -6,8 +6,16 @@
 
 Welcome to your project repository for the **ISYS2001 Final Programming Project**. This repo provides a starting point for building your **Smart Finance Assistant**.
 
----
+ORDER OF EVENTS 
+AI CONVERSATIONS
 
+LICENSE
+
+PRINCESS'DIARY
+
+Starter_Notebook 
+
+---
 ## 📖 Project Overview
 In this project, you will design and implement a **Smart Finance Assistant** using:
 - Python (Google Colab)
