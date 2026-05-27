@@ -114,7 +114,7 @@ def generate_financial_recommendations(financial_kpis: Dict[str, Any]) -> str:
     summary_df = financial_kpis.get('summary_dataframe', pd.DataFrame())
     ### Entry 7- 
     <img width="1287" height="612" alt="Screenshot 2026-05-27 152708" src="https://github.com/user-attachments/assets/3e3ffc34-07c7-46ff-aeed-9d5243fb29ee" />
-When I am trying to Ask the chatbot some questions the application is outputting an error message. 
+When I am trying to Ask the chatbot some questions the application is outputting an error message. I managed to fix the error now my chat bot is now responding to the user and i had prompted it to do. 
 
 
     
